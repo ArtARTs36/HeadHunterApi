@@ -3,6 +3,7 @@
 namespace ArtARTs36\HeadHunterApi\Entities;
 
 use ArtARTs36\HeadHunterApi\Contracts\Entity;
+use ArtARTs36\HeadHunterApi\Support\Entity\WithId;
 use ArtARTs36\HeadHunterApi\Support\Entity\WithName;
 use ArtARTs36\HeadHunterApi\Support\Entity\WithWebUrl;
 use ArtARTs36\HeadHunterApi\Support\EntityContainer;
@@ -17,6 +18,7 @@ class Vacancy implements Entity
     use WithRawData;
     use WithName;
     use WithWebUrl;
+    use WithId;
 
     /** @var Area */
     private $area;
@@ -37,6 +39,7 @@ class Vacancy implements Entity
     {
         $this->rawData = $rawData;
 
+        $this->id = $rawData['id'];
         $this->name = $rawData['name'];
         $this->area = EntityContainer::remember(Area::class, $rawData['area']['id'], function () use ($rawData) {
             return new Area($rawData);
