@@ -2,7 +2,6 @@
 
 namespace ArtARTs36\HeadHunterApi\Features\Vacancy;
 
-use ArtARTs36\HeadHunterApi\Contracts\Client;
 use ArtARTs36\HeadHunterApi\Contracts\Feature;
 use ArtARTs36\HeadHunterApi\Contracts\Query;
 use ArtARTs36\HeadHunterApi\Support\Feature\WithClient;

@@ -3,6 +3,8 @@
 namespace ArtARTs36\HeadHunterApi;
 
 use ArtARTs36\HeadHunterApi\Contracts\Client as ClientContract;
+use ArtARTs36\HeadHunterApi\Exceptions\ExceptionHandler;
+use ArtARTs36\HeadHunterApi\Exceptions\SendRequestException;
 
 /**
  * Class Client
@@ -11,25 +13,31 @@ use ArtARTs36\HeadHunterApi\Contracts\Client as ClientContract;
 class Client implements ClientContract
 {
     public const METHOD_GET = 'GET';
+    public const ALLOWED_HTTP_CODES = [200, 201];
 
     protected $baseUrl;
 
     protected $userAgent;
 
+    protected $exceptionHandler;
+
     /**
      * Client constructor.
      * @param string $url
      * @param string $userAgent
+     * @param ExceptionHandler|null $exceptionHandler
      */
-    public function __construct(string $url, string $userAgent)
+    public function __construct(string $url, string $userAgent, ExceptionHandler $exceptionHandler = null)
     {
         $this->baseUrl = $url;
         $this->userAgent = $userAgent;
+        $this->exceptionHandler = $exceptionHandler ?? new ExceptionHandler();
     }
 
     /**
      * @param string $url
      * @return array
+     * @throws SendRequestException
      */
     public function get(string $url): array
     {
@@ -41,6 +49,7 @@ class Client implements ClientContract
      * @param string $url
      * @param array|null $params
      * @return array
+     * @throws SendRequestException
      */
     protected function send(string $method, string $url, array $params = null): array
     {
@@ -61,7 +70,13 @@ class Client implements ClientContract
 
         $response = curl_exec($ch);
 
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         curl_close($ch);
+
+        if (!in_array($httpCode, static::ALLOWED_HTTP_CODES)) {
+            $this->exceptionHandler->handle($response);
+        }
 
         return json_decode($response, true);
     }
