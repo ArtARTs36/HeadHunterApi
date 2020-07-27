@@ -49,7 +49,7 @@ class Vacancy implements Feature
      */
     protected function urlOfQuery(Query $query): string
     {
-        return static::URL . '?'. ParamsUrl::create($query->params());
+        return static::URL . '?'. ParamsUrl::convert($query->params());
     }
 
     /**

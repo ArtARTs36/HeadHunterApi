@@ -2,8 +2,6 @@
 
 namespace ArtARTs36\HeadHunterApi\Contracts;
 
-use ArtARTs36\HeadHunterApi\BasedQuery;
-
 /**
  * Interface Feature
  * @package ArtARTs36\HeadHunterApi\Contracts

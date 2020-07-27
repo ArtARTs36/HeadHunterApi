@@ -9,7 +9,7 @@ class ParamsUrlTest extends TestCase
 {
     public function testCreate(): void
     {
-        $url = ParamsUrl::create([
+        $url = ParamsUrl::convert([
             [
                 'employeer_id' => 1,
             ],

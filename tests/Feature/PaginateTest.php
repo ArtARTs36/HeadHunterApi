@@ -31,10 +31,10 @@ class PaginateTest extends TestCase
         $feature = new class implements Feature {
             public function executeQuery(Query $query)
             {
-                return ParamsUrl::create($query->params());
+                return ParamsUrl::convert($query->params());
             }
         };
 
-        self::assertEquals('page=5&per_page=10', $feature->executeQuery($query));
+        self::assertEquals("page={$page}&per_page={$count}", $feature->executeQuery($query));
     }
 }
