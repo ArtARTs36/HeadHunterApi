@@ -4,9 +4,9 @@ Usage:
 use ArtARTs36\HeadHunterApi\Client;
 use ArtARTs36\HeadHunterApi\Features\Vacancy\Vacancy;
 
-$client = new Client('https://api.hh.ru', "User-Agent: MyApp/temicska99@mail.ru");
+$client = new Client('https://api.hh.ru', "MyApp/mymail.ru");
 $feature = new Vacancy($client);
-$vacancy = $feature->find(33411209);
+$vacancy = $feature->find(123456789);
 
 var_dump($vacancy->getSpecializations());
 ```

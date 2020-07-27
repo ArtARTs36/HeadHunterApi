@@ -3,6 +3,7 @@
 namespace ArtARTs36\HeadHunterApi\Entities;
 
 use ArtARTs36\HeadHunterApi\Contracts\Entity;
+use ArtARTs36\HeadHunterApi\Support\Entity\WithName;
 use ArtARTs36\HeadHunterApi\Support\EntityContainer;
 use ArtARTs36\HeadHunterApi\Support\Entity\WithRawData;
 
@@ -13,9 +14,7 @@ use ArtARTs36\HeadHunterApi\Support\Entity\WithRawData;
 class Vacancy implements Entity
 {
     use WithRawData;
-
-    /** @var string */
-    private $name;
+    use WithName;
 
     /** @var Area */
     private $area;
@@ -83,14 +82,6 @@ class Vacancy implements Entity
     public function getArea(): Area
     {
         return $this->area;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
     }
 
     public function getSpecializations(): ?array

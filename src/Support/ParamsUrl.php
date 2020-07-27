@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtARTs36\HeadHunterApi;
+namespace ArtARTs36\HeadHunterApi\Support;
 
 class ParamsUrl
 {

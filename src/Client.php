@@ -49,7 +49,7 @@ class Client implements ClientContract
         curl_setopt($ch, CURLOPT_URL, $this->url($url));
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            "User-Agent: MyApp/temicska99@mail.ru",
+            "User-Agent: {$this->userAgent}",
         ]);
 
         curl_setopt($ch, CURLOPT_HEADER, false);

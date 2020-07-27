@@ -5,7 +5,7 @@ namespace ArtARTs36\HeadHunterApi\Tests\Feature;
 use ArtARTs36\HeadHunterApi\BasedQuery;
 use ArtARTs36\HeadHunterApi\Contracts\Feature;
 use ArtARTs36\HeadHunterApi\Contracts\Query;
-use ArtARTs36\HeadHunterApi\ParamsUrl;
+use ArtARTs36\HeadHunterApi\Support\ParamsUrl;
 use ArtARTs36\HeadHunterApi\Support\WithPaginate;
 use PHPUnit\Framework\TestCase;
 
