@@ -30,6 +30,9 @@ class Vacancy implements Entity
     /** @var array|null */
     private $specializations;
 
+    /** @var string */
+    private $description;
+
     public function __construct(array $rawData)
     {
         $this->rawData = $rawData;
@@ -38,9 +41,11 @@ class Vacancy implements Entity
         $this->area = EntityContainer::remember(Area::class, $rawData['area']['id'], function () use ($rawData) {
             return new Area($rawData);
         });
+
         $this->publishedAt = $rawData['published_at'];
         $this->webUrl = $rawData['alternate_url'];
         $this->salary = $rawData['salary'];
+        $this->description = $rawData['description'] ?? null;
 
         if (!empty($rawData['specializations'])) {
             $this->specializations = array_map(function (array $item) {
@@ -75,8 +80,39 @@ class Vacancy implements Entity
         return $this->area;
     }
 
+    /**
+     * @return array|null
+     */
     public function getSpecializations(): ?array
     {
         return $this->specializations;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPreparedDescription(): ?string
+    {
+        if (empty($this->description)) {
+            return null;
+        }
+
+        $description = str_replace(
+            ['<br />', '<li>', '<p>', '  '],
+            ["\n", "\n", "\n", ' '],
+            $this->description
+        );
+
+        $description = trim($description);
+
+        return strip_tags($description);
     }
 }

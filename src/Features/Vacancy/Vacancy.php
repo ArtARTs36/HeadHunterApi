@@ -4,6 +4,7 @@ namespace ArtARTs36\HeadHunterApi\Features\Vacancy;
 
 use ArtARTs36\HeadHunterApi\Contracts\Feature;
 use ArtARTs36\HeadHunterApi\Contracts\Query;
+use ArtARTs36\HeadHunterApi\Support\Collection;
 use ArtARTs36\HeadHunterApi\Support\Feature\WithClient;
 use ArtARTs36\HeadHunterApi\Support\ParamsUrl;
 use ArtARTs36\HeadHunterApi\Entities\Vacancy as VacancyEntity;
@@ -20,15 +21,20 @@ class Vacancy implements Feature
 
     /**
      * @param Query $query
-     * @return array|mixed
+     * @return Collection|VacancyEntity[]
      */
     public function executeQuery(Query $query)
     {
         $response = $this->client->get($this->urlOfQuery($query));
 
-        return array_map(function ($item) {
-            return new VacancyEntity($item);
-        }, $response['items']);
+        return new Collection(
+            array_map(function ($item) {
+                return new VacancyEntity($item);
+            }, $response['items']),
+            $response['found'] ?? null,
+            $response['pages'] ?? null,
+            $response['page'] ?? null
+        );
     }
 
     /**
