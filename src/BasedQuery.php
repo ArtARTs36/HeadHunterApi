@@ -11,7 +11,7 @@ abstract class BasedQuery
     /**
      * @var array
      */
-    protected $params;
+    protected $params = [];
 
     /**
      * @param mixed $key
@@ -41,6 +41,20 @@ abstract class BasedQuery
      */
     public function hasParam($key): bool
     {
-        return !empty($this->params[$key]);
+        $state = false;
+
+        array_walk_recursive($this->params, function ($v, $k) use ($key, &$state) {
+            if ($state) {
+                return;
+            }
+
+            if ($k === $key) {
+                $state = true;
+            }
+
+            return;
+        });
+
+        return $state;
     }
 }

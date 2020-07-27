@@ -4,6 +4,7 @@ namespace ArtARTs36\HeadHunterApi\Entities;
 
 use ArtARTs36\HeadHunterApi\Contracts\Entity;
 use ArtARTs36\HeadHunterApi\Support\Entity\WithName;
+use ArtARTs36\HeadHunterApi\Support\Entity\WithWebUrl;
 use ArtARTs36\HeadHunterApi\Support\EntityContainer;
 use ArtARTs36\HeadHunterApi\Support\Entity\WithRawData;
 
@@ -15,15 +16,13 @@ class Vacancy implements Entity
 {
     use WithRawData;
     use WithName;
+    use WithWebUrl;
 
     /** @var Area */
     private $area;
 
     /** @var string */
     private $publishedAt;
-
-    /** @var string */
-    private $webUrl;
 
     /** @var mixed */
     private $salary;
@@ -58,14 +57,6 @@ class Vacancy implements Entity
     public function getSalary()
     {
         return $this->salary;
-    }
-
-    /**
-     * @return string
-     */
-    public function getWebUrl(): string
-    {
-        return $this->webUrl;
     }
 
     /**
