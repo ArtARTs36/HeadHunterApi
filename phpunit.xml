@@ -13,6 +13,7 @@
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="UrlTest.php">./tests/Unit</directory>
+            <directory suffix="CollectionTest.php">./tests/Unit</directory>
             <directory suffix="PaginateTest.php">./tests/Feature</directory>
             <directory suffix="VacancyTest.php">./tests/Feature</directory>
             <directory suffix="CompanyTest.php">./tests/Feature</directory>

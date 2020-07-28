@@ -12,7 +12,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     protected $items;
 
-    public function __construct(array $items, ?int $maxCount, ?int $maxPage = 0, ?int $page = 0)
+    public function __construct(array $items, ?int $maxCount = null, ?int $maxPage = 0, ?int $page = 0)
     {
         $this->items = $items;
         $this->maxCount = $maxCount ?? $this->count();
@@ -25,7 +25,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
      */
     public function offsetExists($offset)
     {
-        return empty($this->items[$offset]);
+        return !empty($this->items[$offset]);
     }
 
     /**
@@ -114,5 +114,45 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
     public function last()
     {
         return end($this->items);
+    }
+
+    /**
+     * @param mixed $item
+     * @return $this
+     */
+    public function push($item)
+    {
+        $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * @param callable $callback
+     * @return Collection
+     */
+    public function map(callable $callback): Collection
+    {
+        return new static(array_combine(
+            $keys = array_keys($this->items),
+            array_map($callback, $this->items, $keys)
+        ));
+    }
+
+    /**
+     * @param callable $callback
+     * @return Collection
+     */
+    public function filter(callable $callback): Collection
+    {
+        return new static(array_filter($this->items, $callback));
+    }
+
+    /**
+     * @return Collection
+     */
+    public function values(): Collection
+    {
+        return new Collection(array_values($this->items));
     }
 }
