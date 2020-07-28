@@ -3,6 +3,9 @@
 namespace ArtARTs36\HeadHunterApi\Tests\Unit;
 
 use ArtARTs36\HeadHunterApi\Client;
+use ArtARTs36\HeadHunterApi\Exceptions\ExceptionHandler;
+use ArtARTs36\HeadHunterApi\IO\Request;
+use ArtARTs36\HeadHunterApi\IO\Response;
 use ArtARTs36\HeadHunterApi\Tests\Traits\CallMethodViaReflection;
 use PHPUnit\Framework\TestCase;
 
@@ -28,6 +31,65 @@ class ClientTest extends TestCase
             'url',
             $url
         ));
+    }
+
+    /**
+     * @covers \ArtARTs36\HeadHunterApi\Client::isAllowedHttpCode
+     */
+    public function testIsAllowedHttpCode(): void
+    {
+        $client = $this->make();
+
+        $checker = function ($code) use ($client) {
+            return $this->callMethodViaReflection($client, 'isAllowedHttpCode', $code);
+        };
+
+        self::assertTrue($checker(200));
+        self::assertTrue($checker(201));
+        self::assertFalse($checker(403));
+        self::assertFalse($checker(404));
+        self::assertFalse($checker(409));
+        self::assertFalse($checker(421));
+        self::assertFalse($checker(500));
+        self::assertFalse($checker(501));
+        self::assertFalse($checker(501));
+    }
+
+    /**
+     * @covers \ArtARTs36\HeadHunterApi\Client
+     */
+    public function testSend(): void
+    {
+        $request = new class('https://api.hh.ru/vacancies/1', 'MyApp/my@mail.ru') extends Request {
+            public function execute()
+            {
+                return new Response(200, '[]');
+            }
+        };
+
+        $client = new class('https://api.hh.ru', 'MyApp/my@mail.ru', $request) extends Client {
+            private $request;
+
+            public function __construct(
+                string $url,
+                string $userAgent,
+                Request $request,
+                ExceptionHandler $exceptionHandler = null
+            ) {
+                parent::__construct($url, $userAgent, $exceptionHandler);
+
+                $this->request = $request;
+            }
+
+            protected function createRequest(string $url): Request
+            {
+                return $this->request;
+            }
+        };
+
+        $client->get('https://api.hh.ru/vacancies/1');
+
+        self::assertEquals(Request::METHOD_GET, $request->method());
     }
 
     protected function make(): Client
