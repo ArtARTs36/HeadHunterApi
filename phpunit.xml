@@ -14,6 +14,10 @@
         <testsuite name="Unit">
             <directory suffix="UrlTest.php">./tests/Unit</directory>
             <directory suffix="CollectionTest.php">./tests/Unit</directory>
+            <directory suffix="AreaEntityTest.php">./tests/Unit</directory>
+            <directory suffix="ClientTest.php">./tests/Unit</directory>
+            <directory suffix="SpecializationEntityTest.php">./tests/Unit</directory>
+            <directory suffix="ExceptionHandlerTest.php">./tests/Unit</directory>
             <directory suffix="PaginateTest.php">./tests/Feature</directory>
             <directory suffix="VacancyTest.php">./tests/Feature</directory>
             <directory suffix="CompanyTest.php">./tests/Feature</directory>

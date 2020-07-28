@@ -8,6 +8,10 @@ use ArtARTs36\HeadHunterApi\Support\Entity\WithName;
 use ArtARTs36\HeadHunterApi\Support\Entity\WithRawData;
 use ArtARTs36\HeadHunterApi\Support\Entity\WithWebUrl;
 
+/**
+ * Class Company
+ * @package ArtARTs36\HeadHunterApi\Entities
+ */
 class Company implements Entity
 {
     use WithRawData;
@@ -15,25 +19,33 @@ class Company implements Entity
     use WithName;
     use WithWebUrl;
 
+    /** @var string|null */
     private $vacanciesUrl;
 
-    private $openVacancies;
+    /** @var int|null */
+    private $openVacanciesCount;
 
     public function __construct(array $rawData)
     {
         $this->rawData = $rawData;
-        $this->id = $rawData['id'];
-        $this->name = $rawData['name'];
-        $this->webUrl = $rawData['alternate_url'];
-        $this->vacanciesUrl = $rawData['vacancies_url'] ?? null;
-        $this->openVacancies = $rawData['open_vacancies'] ?? null;
+        $this->id = (string) $rawData['id'];
+        $this->name = (string) $rawData['name'];
+        $this->webUrl = (string) $rawData['alternate_url'];
+        $this->vacanciesUrl = !empty($rawData['vacancies_url']) ? (string) $rawData['vacancies_url'] : null;
+        $this->openVacanciesCount = !empty($rawData['open_vacancies']) ? (int) $rawData['open_vacancies'] : null;
     }
 
-    public function getOpenVacancies(): ?int
+    /**
+     * @return int|null
+     */
+    public function getOpenVacanciesCount(): ?int
     {
-        return $this->openVacancies;
+        return $this->openVacanciesCount;
     }
 
+    /**
+     * @return string|null
+     */
     public function getVacanciesUrl(): ?string
     {
         return $this->vacanciesUrl;

@@ -5,6 +5,10 @@ namespace ArtARTs36\HeadHunterApi\Tests\Unit;
 use ArtARTs36\HeadHunterApi\Support\Collection;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class CollectionTest
+ * @package ArtARTs36\HeadHunterApi\Tests\Unit
+ */
 class CollectionTest extends TestCase
 {
     /**

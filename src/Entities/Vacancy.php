@@ -35,20 +35,24 @@ class Vacancy implements Entity
     /** @var string */
     private $description;
 
+    /**
+     * Vacancy constructor.
+     * @param array $rawData
+     */
     public function __construct(array $rawData)
     {
         $this->rawData = $rawData;
 
-        $this->id = $rawData['id'];
-        $this->name = $rawData['name'];
+        $this->id = (int) $rawData['id'];
+        $this->name = (string) $rawData['name'];
         $this->area = EntityContainer::remember(Area::class, $rawData['area']['id'], function () use ($rawData) {
             return new Area($rawData);
         });
 
         $this->publishedAt = $rawData['published_at'];
-        $this->webUrl = $rawData['alternate_url'];
+        $this->webUrl = (string) $rawData['alternate_url'];
         $this->salary = $rawData['salary'];
-        $this->description = $rawData['description'] ?? null;
+        $this->description = $rawData['description'] ? (string) $rawData['description'] : null;
 
         if (!empty($rawData['specializations'])) {
             $this->specializations = array_map(function (array $item) {

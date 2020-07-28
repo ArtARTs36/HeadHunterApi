@@ -5,8 +5,15 @@ namespace ArtARTs36\HeadHunterApi\Tests\Unit;
 use ArtARTs36\HeadHunterApi\Support\ParamsUrl;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class ParamsUrlTest
+ * @package ArtARTs36\HeadHunterApi\Tests\Unit
+ */
 class ParamsUrlTest extends TestCase
 {
+    /**
+     * @covers \ArtARTs36\HeadHunterApi\Support\ParamsUrl
+     */
     public function testCreate(): void
     {
         $url = ParamsUrl::convert([

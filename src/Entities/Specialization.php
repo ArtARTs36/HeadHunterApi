@@ -7,6 +7,10 @@ use ArtARTs36\HeadHunterApi\Support\Entity\WithId;
 use ArtARTs36\HeadHunterApi\Support\Entity\WithName;
 use ArtARTs36\HeadHunterApi\Support\Entity\WithRawData;
 
+/**
+ * Class Specialization
+ * @package ArtARTs36\HeadHunterApi\Entities
+ */
 class Specialization implements Entity
 {
     use WithRawData;
@@ -23,7 +27,7 @@ class Specialization implements Entity
     public function __construct(array $rawData)
     {
         $this->rawData = $rawData;
-        $this->name = $rawData['name'];
+        $this->name = (string) $rawData['name'];
         $this->id = (int) $rawData['id'];
         $this->profName = (string) $rawData['profarea_name'];
     }
