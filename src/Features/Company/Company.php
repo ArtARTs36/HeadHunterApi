@@ -5,6 +5,7 @@ namespace ArtARTs36\HeadHunterApi\Features\Company;
 use ArtARTs36\HeadHunterApi\Contracts\Feature;
 use ArtARTs36\HeadHunterApi\Contracts\Query;
 use ArtARTs36\HeadHunterApi\Entities\Company as CompanyEntity;
+use ArtARTs36\HeadHunterApi\Support\Collection;
 use ArtARTs36\HeadHunterApi\Support\Feature\WithClient;
 use ArtARTs36\HeadHunterApi\Support\ParamsUrl;
 
@@ -21,9 +22,14 @@ class Company implements Feature
     {
         $response = $this->client->get($this->urlOfQuery($query));
 
-        return array_map(function ($item) {
-            return new CompanyEntity($item);
-        }, $response['items']);
+        return new Collection(
+            array_map(function ($item) {
+                return new CompanyEntity($item);
+            }, $response['items']),
+            $response['found'] ?? null,
+            $response['pages'] ?? null,
+            $response['page'] ?? null
+        );
     }
 
     /**

@@ -5,6 +5,8 @@ namespace ArtARTs36\HeadHunterApi\Tests\Unit;
 use ArtARTs36\HeadHunterApi\Exceptions\BadArgumentException;
 use ArtARTs36\HeadHunterApi\Exceptions\ExceptionHandler;
 use ArtARTs36\HeadHunterApi\Exceptions\SendRequestException;
+use ArtARTs36\HeadHunterApi\IO\Request;
+use ArtARTs36\HeadHunterApi\IO\Response;
 use ArtARTs36\HeadHunterApi\Tests\Traits\CallMethodViaReflection;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +27,7 @@ class ExceptionHandlerTest extends TestCase
 
         self::expectException(SendRequestException::class);
 
-        $handler->handle();
+        $handler->handle(new Request('', ''), new Response(5, ''));
     }
 
     /**
@@ -42,6 +44,6 @@ class ExceptionHandlerTest extends TestCase
 
         self::expectException(BadArgumentException::class);
 
-        $handler->handle($message);
+        $handler->handle(new Request('', ''), new Response(5, $message));
     }
 }

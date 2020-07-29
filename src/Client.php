@@ -5,6 +5,7 @@ namespace ArtARTs36\HeadHunterApi;
 use ArtARTs36\HeadHunterApi\Contracts\Client as ClientContract;
 use ArtARTs36\HeadHunterApi\Exceptions\ExceptionHandler;
 use ArtARTs36\HeadHunterApi\Exceptions\SendRequestException;
+use ArtARTs36\HeadHunterApi\IO\Request;
 
 /**
  * Class Client
@@ -12,7 +13,6 @@ use ArtARTs36\HeadHunterApi\Exceptions\SendRequestException;
  */
 class Client implements ClientContract
 {
-    public const METHOD_GET = 'GET';
     public const ALLOWED_HTTP_CODES = [200, 201];
 
     protected $baseUrl;
@@ -41,7 +41,7 @@ class Client implements ClientContract
      */
     public function get(string $url): array
     {
-        return $this->send(static::METHOD_GET, $url);
+        return $this->send(Request::METHOD_GET, $url);
     }
 
     /**
@@ -53,32 +53,23 @@ class Client implements ClientContract
      */
     protected function send(string $method, string $url, array $params = null): array
     {
-        $ch = curl_init();
+        $request = $this->createRequest($url);
 
-        curl_setopt($ch, CURLOPT_URL, $this->url($url));
-
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            "User-Agent: {$this->userAgent}",
-        ]);
-
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        if ($method !== static::METHOD_GET) {
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        if ($method !== Request::METHOD_GET) {
+            $request->setMethod($method);
         }
 
-        $response = curl_exec($ch);
-
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        curl_close($ch);
-
-        if (!in_array($httpCode, static::ALLOWED_HTTP_CODES)) {
-            $this->exceptionHandler->handle($response);
+        if (!empty($params)) {
+            $request->setParams($params);
         }
 
-        return json_decode($response, true);
+        $response = $request->execute();
+
+        if (!$this->isAllowedHttpCode($response->code())) {
+            $this->exceptionHandler->handle($request, $response);
+        }
+
+        return $response->toArray();
     }
 
     /**
@@ -88,5 +79,23 @@ class Client implements ClientContract
     protected function url(string $url): string
     {
         return $this->baseUrl . DIRECTORY_SEPARATOR . $url;
+    }
+
+    /**
+     * @param $code
+     * @return bool
+     */
+    final protected function isAllowedHttpCode($code): bool
+    {
+        return in_array($code, static::ALLOWED_HTTP_CODES);
+    }
+
+    /**
+     * @param string $url
+     * @return Request
+     */
+    protected function createRequest(string $url): Request
+    {
+        return new Request($this->url($url), $this->userAgent);
     }
 }
