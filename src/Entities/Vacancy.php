@@ -35,6 +35,9 @@ class Vacancy implements Entity
     /** @var string */
     private $description;
 
+    /** @var array|null */
+    private $skillsNames;
+
     /**
      * Vacancy constructor.
      * @param array $rawData
@@ -60,6 +63,12 @@ class Vacancy implements Entity
                     return new Specialization($item);
                 });
             }, $rawData['specializations']);
+        }
+
+        if (!empty($rawData['key_skills'])) {
+            $this->skillsNames = array_map(function (array $item) {
+                return $item['name'];
+            }, $rawData['key_skills']);
         }
     }
 
@@ -121,5 +130,13 @@ class Vacancy implements Entity
         $description = trim($description);
 
         return strip_tags($description);
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getSkillsNames(): ?array
+    {
+        return $this->skillsNames;
     }
 }
