@@ -46,7 +46,7 @@ class Vacancy implements Entity
         $this->id = (int) $rawData['id'];
         $this->name = (string) $rawData['name'];
         $this->area = EntityContainer::remember(Area::class, $rawData['area']['id'], function () use ($rawData) {
-            return new Area($rawData);
+            return new Area($rawData['area']);
         });
 
         $this->publishedAt = $rawData['published_at'];
