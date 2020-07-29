@@ -52,7 +52,7 @@ class Vacancy implements Entity
         $this->publishedAt = $rawData['published_at'];
         $this->webUrl = (string) $rawData['alternate_url'];
         $this->salary = $rawData['salary'];
-        $this->description = $rawData['description'] ? (string) $rawData['description'] : null;
+        $this->description = !empty($rawData['description']) ? (string) $rawData['description'] : null;
 
         if (!empty($rawData['specializations'])) {
             $this->specializations = array_map(function (array $item) {
