@@ -7,7 +7,6 @@ use ArtARTs36\HeadHunterApi\Exceptions\ExceptionHandler;
 use ArtARTs36\HeadHunterApi\IO\Request;
 use ArtARTs36\HeadHunterApi\IO\Response;
 use ArtARTs36\HeadHunterApi\Tests\Traits\CallMethodViaReflection;
-use ArtARTs36\HeadHunterApi\Tests\Traits\GetPropertyViaReflection;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,7 +16,6 @@ use PHPUnit\Framework\TestCase;
 class ClientTest extends TestCase
 {
     use CallMethodViaReflection;
-    use GetPropertyViaReflection;
 
     private const BASE_URL = 'https://api.hh.ru';
 
@@ -95,7 +93,6 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @covers Client::createRequest()
      * @throws \ReflectionException
      */
     public function testCreateRequest(): void
@@ -105,10 +102,7 @@ class ClientTest extends TestCase
         /** @var Request $request */
         $request = $this->callMethodViaReflection($client, 'createRequest', 'vacancies/1');
 
-        self::assertEquals(
-            'https://api.hh.ru/vacancies/1',
-            $this->getPropertyViaReflection($request, 'uri')
-        );
+        self::assertEquals('https://api.hh.ru/vacancies/1', $request->uri());
     }
 
     protected function make(): Client

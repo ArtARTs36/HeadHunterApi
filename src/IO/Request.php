@@ -82,12 +82,22 @@ class Request
     }
 
     /**
+     * @return string
+     */
+    public function uri(): string
+    {
+        return $this->uri;
+    }
+
+    /**
      * @return Response
      * @throws SendRequestException
      */
     public function execute(): Response
     {
         curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, $this->method);
+
+        curl_setopt($this->curl, CURLOPT_URL, $this->uri);
 
         $response = curl_exec($this->curl);
 

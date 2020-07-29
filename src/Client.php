@@ -66,7 +66,7 @@ class Client implements ClientContract
         $response = $request->execute();
 
         if (!$this->isAllowedHttpCode($response->code())) {
-            $this->exceptionHandler->handle($response);
+            $this->exceptionHandler->handle($request, $response);
         }
 
         return $response->toArray();
