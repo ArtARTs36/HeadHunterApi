@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtARTs36\HeadHunterApi\Tests\Unit;
+namespace ArtARTs36\HeadHunterApi\Tests\Feature;
 
 use ArtARTs36\HeadHunterApi\Features\Company\Query;
 use PHPUnit\Framework\TestCase;
