@@ -11,7 +11,7 @@ trait CallMethodViaReflection
      * @return mixed
      * @throws \ReflectionException
      */
-    protected function callMethodViaReflection(object $object, string $method, ...$params)
+    protected function callMethodViaReflection($object, string $method, ...$params)
     {
         $reflector = new \ReflectionObject($object);
 

@@ -4,7 +4,7 @@ namespace ArtARTs36\HeadHunterApi\Tests\Traits;
 
 trait GetPropertyViaReflection
 {
-    public function getPropertyViaReflection(object $object, string $property)
+    public function getPropertyViaReflection($object, string $property)
     {
         $reflector = new \ReflectionObject($object);
 
