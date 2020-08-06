@@ -14,7 +14,7 @@ class CollectionTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\Support\Collection
      */
-    public function test(): void
+    public function test()
     {
         $maxCount = 30;
         $maxPage = 5;
@@ -58,7 +58,7 @@ class CollectionTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\Support\Collection::map
      */
-    public function testMap(): void
+    public function testMap()
     {
         $items = [5, 6, 7, 8, 9];
 
@@ -72,7 +72,7 @@ class CollectionTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\Support\Collection::filter
      */
-    public function testFilter(): void
+    public function testFilter()
     {
         $items = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 

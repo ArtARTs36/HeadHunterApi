@@ -13,7 +13,7 @@ class Company implements Feature
 {
     use WithClient;
 
-    public const URL = 'employers';
+    const URL = 'employers';
 
     /**
      * @inheritDoc

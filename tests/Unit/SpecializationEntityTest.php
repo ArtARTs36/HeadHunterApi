@@ -14,7 +14,7 @@ class SpecializationEntityTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\Entities\Specialization
      */
-    public function test(): void
+    public function test()
     {
         $rawData = [
             'id' => rand(1, 99),

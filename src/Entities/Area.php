@@ -36,7 +36,7 @@ class Area implements Entity
     /**
      * @return string|null
      */
-    public function getUrl(): ?string
+    public function getUrl()
     {
         return $this->url;
     }

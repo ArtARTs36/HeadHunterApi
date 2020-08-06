@@ -11,9 +11,9 @@ use ArtARTs36\HeadHunterApi\Exceptions\SendRequestException;
  */
 class Request
 {
-    public const METHOD_GET = 'GET';
+    const METHOD_GET = 'GET';
 
-    public const ALLOWED_METHODS = [
+    const ALLOWED_METHODS = [
         self::METHOD_GET,
     ];
 

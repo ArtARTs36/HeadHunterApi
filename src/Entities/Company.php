@@ -38,7 +38,7 @@ class Company implements Entity
     /**
      * @return int|null
      */
-    public function getOpenVacanciesCount(): ?int
+    public function getOpenVacanciesCount()
     {
         return $this->openVacanciesCount;
     }
@@ -46,7 +46,7 @@ class Company implements Entity
     /**
      * @return string|null
      */
-    public function getVacanciesUrl(): ?string
+    public function getVacanciesUrl(): ng
     {
         return $this->vacanciesUrl;
     }

@@ -14,7 +14,7 @@ class ResponseTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\IO\Response
      */
-    public function test(): void
+    public function test()
     {
         $code = 5;
 

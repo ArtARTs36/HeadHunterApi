@@ -13,7 +13,7 @@ use ArtARTs36\HeadHunterApi\IO\Request;
  */
 class Client implements ClientContract
 {
-    public const ALLOWED_HTTP_CODES = [200, 201];
+    const ALLOWED_HTTP_CODES = [200, 201];
 
     protected $baseUrl;
 

@@ -7,7 +7,7 @@ use ArtARTs36\HeadHunterApi\IO\Response;
 
 class ExceptionHandler
 {
-    public function handle(Request $request, Response $response): void
+    public function handle(Request $request, Response $response)
     {
         if (is_string($response->content()) &&
             ($json = json_decode($response->content(), true)) &&
@@ -18,7 +18,7 @@ class ExceptionHandler
         throw new SendRequestException();
     }
 
-    private function byDescription(string $description, array $json, Request $request): void
+    private function byDescription(string $description, array $json, Request $request)
     {
         switch ($description) {
             case 'bad argument':

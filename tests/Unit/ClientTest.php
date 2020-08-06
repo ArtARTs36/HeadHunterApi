@@ -22,7 +22,7 @@ class ClientTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\Client::url
      */
-    public function testUrl(): void
+    public function testUrl()
     {
         $url = 'companies/'. rand(1, 99);
 
@@ -36,7 +36,7 @@ class ClientTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\Client::isAllowedHttpCode
      */
-    public function testIsAllowedHttpCode(): void
+    public function testIsAllowedHttpCode()
     {
         $client = $this->make();
 
@@ -58,7 +58,7 @@ class ClientTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\Client
      */
-    public function testSend(): void
+    public function testSend()
     {
         $request = new class('https://api.hh.ru/vacancies/1', 'MyApp/my@mail.ru') extends Request {
             public function execute(): Response
@@ -95,7 +95,7 @@ class ClientTest extends TestCase
     /**
      * @throws \ReflectionException
      */
-    public function testCreateRequest(): void
+    public function testCreateRequest()
     {
         $client = $this->make();
 

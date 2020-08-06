@@ -19,7 +19,7 @@ class RequestTest extends TestCase
      * @covers \ArtARTs36\HeadHunterApi\IO\Request::setMethod
      * @covers \ArtARTs36\HeadHunterApi\IO\Request::method
      */
-    public function testSetMethod(): void
+    public function testSetMethod()
     {
         $request = new Request('', '');
 
@@ -39,7 +39,7 @@ class RequestTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\IO\Request::isMethodAllowed
      */
-    public function testIsMethodAllowed(): void
+    public function testIsMethodAllowed()
     {
         $request = new Request('', '');
 

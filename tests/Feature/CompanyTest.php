@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class CompanyTest extends TestCase
 {
-    public function testQuery(): void
+    public function testQuery()
     {
         $query = new Query();
 

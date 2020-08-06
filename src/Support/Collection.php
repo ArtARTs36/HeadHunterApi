@@ -12,7 +12,14 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     protected $items;
 
-    public function __construct(array $items, ?int $maxCount = null, ?int $maxPage = 0, ?int $page = 0)
+    /**
+     * Collection constructor.
+     * @param array $items
+     * @param int|null $maxCount
+     * @param int|null $maxPage
+     * @param int|null $page
+     */
+    public function __construct(array $items, $maxCount = null, $maxPage = 0, $page = 0)
     {
         $this->items = $items;
         $this->maxCount = $maxCount ?? $this->count();

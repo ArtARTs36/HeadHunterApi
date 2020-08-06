@@ -21,7 +21,7 @@ class ExceptionHandlerTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\Exceptions\ExceptionHandler::handle
      */
-    public function testHandle(): void
+    public function testHandle()
     {
         $handler = new ExceptionHandler();
 
@@ -34,7 +34,7 @@ class ExceptionHandlerTest extends TestCase
      * @covers \ArtARTs36\HeadHunterApi\Exceptions\ExceptionHandler::handle
      * @throws SendRequestException
      */
-    public function testBadArgument(): void
+    public function testBadArgument()
     {
         $handler = new ExceptionHandler();
 

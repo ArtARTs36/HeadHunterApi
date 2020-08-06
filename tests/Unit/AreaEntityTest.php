@@ -14,7 +14,7 @@ class AreaEntityTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\Entities\Area
      */
-    public function test(): void
+    public function test()
     {
         $rawData = [
             'id' => rand(1, 99),

@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class PaginateTest extends TestCase
 {
-    public function test(): void
+    public function test()
     {
         $page = 5;
         $count = 10;

@@ -14,10 +14,10 @@ class Query extends BasedQuery implements QueryContract
 {
     use WithPaginate;
 
-    public const EMPLOYER_ID = 'employer_id';
-    public const SALARY = 'salary';
-    public const ONLY_WITH_SALARY = 'only_with_salary';
-    public const PREMIUM = 'premium';
+    const EMPLOYER_ID = 'employer_id';
+    const SALARY = 'salary';
+    const ONLY_WITH_SALARY = 'only_with_salary';
+    const PREMIUM = 'premium';
 
     /**
      * @param int $id

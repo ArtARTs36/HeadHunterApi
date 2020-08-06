@@ -14,7 +14,7 @@ class ParamsUrlTest extends TestCase
     /**
      * @covers \ArtARTs36\HeadHunterApi\Support\ParamsUrl
      */
-    public function testCreate(): void
+    public function testCreate()
     {
         $url = ParamsUrl::convert([
             [

@@ -107,7 +107,7 @@ class Vacancy implements Entity
     /**
      * @return string|null
      */
-    public function getDescription(): ?string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -115,7 +115,7 @@ class Vacancy implements Entity
     /**
      * @return string|null
      */
-    public function getPreparedDescription(): ?string
+    public function getPreparedDescription()
     {
         if (empty($this->description)) {
             return null;

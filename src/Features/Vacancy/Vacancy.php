@@ -17,7 +17,7 @@ class Vacancy implements Feature
 {
     use WithClient;
 
-    public const URL = 'vacancies';
+    const URL = 'vacancies';
 
     /**
      * @param Query $query

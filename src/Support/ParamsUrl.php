@@ -45,7 +45,7 @@ class ParamsUrl
      * @param string $key
      * @param mixed $value
      */
-    protected function add(string $key, $value): void
+    protected function add(string $key, $value)
     {
         if (!empty($this->url)) {
             $this->url .= '&';

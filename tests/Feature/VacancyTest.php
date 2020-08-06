@@ -12,7 +12,7 @@ class VacancyTest extends TestCase
 {
     use CallMethodViaReflection;
 
-    public function testQuery(): void
+    public function testQuery()
     {
         $id = 123;
 
