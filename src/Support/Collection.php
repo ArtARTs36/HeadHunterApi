@@ -105,7 +105,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
      */
     public function first()
     {
-        return $this->items[@array_key_first($this->items) ?? 0];
+        return $this->items[array_key_first($this->items)];
     }
 
     /**
