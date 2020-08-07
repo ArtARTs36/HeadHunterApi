@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  * Class EntityContainerTest
  * @package ArtARTs36\HeadHunterApi\Tests\Unit
  */
-class EntityContainerTest extends TestCase
+final class EntityContainerTest extends TestCase
 {
     /**
      * @covers \ArtARTs36\HeadHunterApi\Support\EntityContainer::get

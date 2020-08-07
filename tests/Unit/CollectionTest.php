@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
  * Class CollectionTest
  * @package ArtARTs36\HeadHunterApi\Tests\Unit
  */
-class CollectionTest extends TestCase
+final class CollectionTest extends TestCase
 {
     /**
      * @covers \ArtARTs36\HeadHunterApi\Support\Collection
@@ -83,5 +83,25 @@ class CollectionTest extends TestCase
         });
 
         self::assertEquals([15], $collection->values()->all());
+    }
+
+    /**
+     * @covers \ArtARTs36\HeadHunterApi\Support\Collection::values
+     */
+    public function testValues(): void
+    {
+        $items = [
+            'a' => 1,
+            'b' => 2,
+            'c' => 'd',
+            'e' => 1.5,
+            'f' => true
+        ];
+
+        $expected = array_values($items);
+
+        $collection = new Collection($items);
+
+        self::assertEquals($expected, $collection->values()->all());
     }
 }

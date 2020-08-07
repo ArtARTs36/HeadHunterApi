@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  * Class RequestTest
  * @package ArtARTs36\HeadHunterApi\Tests\Unit
  */
-class RequestTest extends TestCase
+final class RequestTest extends TestCase
 {
     use CallMethodViaReflection;
 

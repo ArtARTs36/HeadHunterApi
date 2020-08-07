@@ -9,7 +9,7 @@ use ArtARTs36\HeadHunterApi\Support\ParamsUrl;
 use ArtARTs36\HeadHunterApi\Support\WithPaginate;
 use PHPUnit\Framework\TestCase;
 
-class PaginateTest extends TestCase
+final class PaginateTest extends TestCase
 {
     public function test(): void
     {

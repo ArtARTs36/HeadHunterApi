@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
  * Class ParamsUrlTest
  * @package ArtARTs36\HeadHunterApi\Tests\Unit
  */
-class ParamsUrlTest extends TestCase
+final class ParamsUrlTest extends TestCase
 {
     /**
      * @covers \ArtARTs36\HeadHunterApi\Support\ParamsUrl

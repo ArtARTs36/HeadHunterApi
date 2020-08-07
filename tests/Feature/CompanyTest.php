@@ -5,7 +5,7 @@ namespace ArtARTs36\HeadHunterApi\Tests\Feature;
 use ArtARTs36\HeadHunterApi\Features\Company\Query;
 use PHPUnit\Framework\TestCase;
 
-class CompanyTest extends TestCase
+final class CompanyTest extends TestCase
 {
     public function testQuery(): void
     {

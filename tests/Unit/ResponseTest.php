@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
  * Class ResponseTest
  * @package ArtARTs36\HeadHunterApi\Tests\Unit
  */
-class ResponseTest extends TestCase
+final class ResponseTest extends TestCase
 {
     /**
      * @covers \ArtARTs36\HeadHunterApi\IO\Response

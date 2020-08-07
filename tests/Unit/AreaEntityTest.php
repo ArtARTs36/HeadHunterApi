@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
  * Class AreaTest
  * @package ArtARTs36\HeadHunterApi\Tests\Unit
  */
-class AreaEntityTest extends TestCase
+final class AreaEntityTest extends TestCase
 {
     /**
      * @covers \ArtARTs36\HeadHunterApi\Entities\Area
