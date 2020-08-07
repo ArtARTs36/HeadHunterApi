@@ -8,7 +8,7 @@ use ArtARTs36\HeadHunterApi\Contracts\Entity;
  * Class EntityContainer
  * @package ArtARTs36\HeadHunterApi\Support
  */
-class EntityContainer
+final class EntityContainer
 {
     /** @var array */
     private static $container = [];
