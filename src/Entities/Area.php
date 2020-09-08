@@ -29,7 +29,7 @@ class Area implements Entity
         $this->rawData = $rawData;
 
         $this->id = (int) $rawData['id'];
-        $this->name = (string) $rawData['name'];
+        $this->setNameOfRawData($rawData);
         $this->url = !empty($rawData['url']) ? (string) $rawData['url'] : null;
     }
 

@@ -27,9 +27,9 @@ class Specialization implements Entity
     public function __construct(array $rawData)
     {
         $this->rawData = $rawData;
-        $this->name = (string) $rawData['name'];
+        $this->setNameOfRawData($rawData);
         $this->id = (int) $rawData['id'];
-        $this->profName = (string) $rawData['profarea_name'];
+        $this->profName = empty($rawData['profarea_name']) ? '' : (string) $rawData['profarea_name'];
     }
 
     /**

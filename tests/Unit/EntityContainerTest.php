@@ -4,7 +4,7 @@ namespace ArtARTs36\HeadHunterApi\Tests\Unit;
 
 use ArtARTs36\HeadHunterApi\Entities\Area;
 use ArtARTs36\HeadHunterApi\Support\EntityContainer;
-use PHPUnit\Framework\TestCase;
+use ArtARTs36\HeadHunterApi\Tests\TestCase;
 
 /**
  * Class EntityContainerTest
@@ -52,6 +52,29 @@ final class EntityContainerTest extends TestCase
 
         self::assertInstanceOf($type, $response);
         self::assertEquals($area, $response);
+    }
+
+    /**
+     * @covers \ArtARTs36\HeadHunterApi\Support\EntityContainer::reset
+     * @covers \ArtARTs36\HeadHunterApi\Support\EntityContainer::count
+     */
+    public function testResetAndCount(): void
+    {
+        EntityContainer::reset();
+
+        self::assertEquals(0, EntityContainer::count());
+
+        //
+
+        EntityContainer::set(Area::class, 2, $this->createArea(2));
+
+        self::assertEquals(1, EntityContainer::count());
+
+        //
+
+        EntityContainer::reset();
+
+        self::assertEquals(0, EntityContainer::count());
     }
 
     /**

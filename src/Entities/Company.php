@@ -29,7 +29,7 @@ class Company implements Entity
     {
         $this->rawData = $rawData;
         $this->id = (string) $rawData['id'];
-        $this->name = (string) $rawData['name'];
+        $this->setNameOfRawData($rawData);
         $this->webUrl = (string) $rawData['alternate_url'];
         $this->vacanciesUrl = !empty($rawData['vacancies_url']) ? (string) $rawData['vacancies_url'] : null;
         $this->openVacanciesCount = !empty($rawData['open_vacancies']) ? (int) $rawData['open_vacancies'] : null;

@@ -9,12 +9,12 @@ use PHPUnit\Framework\TestCase;
  * Class AreaTest
  * @package ArtARTs36\HeadHunterApi\Tests\Unit
  */
-final class AreaEntityTest extends TestCase
+final class AreaTest extends TestCase
 {
     /**
      * @covers \ArtARTs36\HeadHunterApi\Entities\Area
      */
-    public function test(): void
+    public function testCreateInstance(): void
     {
         $rawData = [
             'id' => rand(1, 99),

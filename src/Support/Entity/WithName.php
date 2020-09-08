@@ -10,4 +10,11 @@ trait WithName
     {
         return $this->name;
     }
+
+    protected function setNameOfRawData(array $rawData, string $key = 'name'): self
+    {
+        $this->name = $rawData[$key] ?? '';
+
+        return $this;
+    }
 }

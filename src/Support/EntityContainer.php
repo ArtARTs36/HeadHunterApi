@@ -50,4 +50,17 @@ final class EntityContainer
     {
         return static::get($type, $id) ?? static::set($type, $id, $setter());
     }
+
+    public static function reset(): void
+    {
+        static::$container = [];
+    }
+
+    /**
+     * @return int
+     */
+    public static function count(): int
+    {
+        return count(static::$container);
+    }
 }
