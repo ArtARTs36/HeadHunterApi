@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtARTs36\HeadHunterApi\Tests\Unit;
+namespace ArtARTs36\HeadHunterApi\Tests\Unit\Entities;
 
 use ArtARTs36\HeadHunterApi\Entities\Specialization;
 use ArtARTs36\HeadHunterApi\Tests\TestCase;
