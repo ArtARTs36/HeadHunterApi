@@ -84,7 +84,7 @@ class Vacancy implements Entity
                 Experience::class,
                 $rawData['experience']['id'],
                 function () use ($rawData) {
-                    return new Experience($rawData);
+                    return new Experience($rawData['experience']);
                 }
             );
         }
