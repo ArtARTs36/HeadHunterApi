@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * Class ClientTest
  * @package ArtARTs36\HeadHunterApi\Tests\Unit
  */
-class ClientTest extends TestCase
+final class ClientTest extends TestCase
 {
     use CallMethodViaReflection;
 

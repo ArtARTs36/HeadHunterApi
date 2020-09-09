@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
  * Class SpecializationEntityTest
  * @package ArtARTs36\HeadHunterApi\Tests\Unit
  */
-class SpecializationEntityTest extends TestCase
+final class SpecializationEntityTest extends TestCase
 {
     /**
      * @covers \ArtARTs36\HeadHunterApi\Entities\Specialization

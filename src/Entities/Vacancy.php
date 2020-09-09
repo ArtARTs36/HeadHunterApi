@@ -38,6 +38,12 @@ class Vacancy implements Entity
     /** @var array|null */
     private $skillsNames;
 
+    /** @var bool */
+    private $hasTestTask;
+
+    /** @var Experience|null */
+    private $experience;
+
     /**
      * Vacancy constructor.
      * @param array $rawData
@@ -47,7 +53,7 @@ class Vacancy implements Entity
         $this->rawData = $rawData;
 
         $this->id = (int) $rawData['id'];
-        $this->name = (string) $rawData['name'];
+        $this->setNameOfRawData($rawData);
         $this->area = EntityContainer::remember(Area::class, $rawData['area']['id'], function () use ($rawData) {
             return new Area($rawData['area']);
         });
@@ -69,6 +75,18 @@ class Vacancy implements Entity
             $this->skillsNames = array_map(function (array $item) {
                 return $item['name'];
             }, $rawData['key_skills']);
+        }
+
+        $this->hasTestTask = $rawData['has_test'] ?? false;
+
+        if (!empty($rawData['experience']) && !empty($rawData['experience']['id'])) {
+            $this->experience = EntityContainer::remember(
+                Experience::class,
+                $rawData['experience']['id'],
+                function () use ($rawData) {
+                    return new Experience($rawData);
+                }
+            );
         }
     }
 
@@ -138,5 +156,13 @@ class Vacancy implements Entity
     public function getSkillsNames(): ?array
     {
         return $this->skillsNames;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasTestTask(): bool
+    {
+        return $this->hasTestTask;
     }
 }

@@ -2,7 +2,7 @@
 
 ![PHP Composer](https://github.com/ArtARTs36/HeadHunterApi/workflows/PHP%20Composer/badge.svg?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-<a href="https://poser.pugx.org/artarts36/pushall-sender/d/total.svg">
+<a href="https://poser.pugx.org/artarts36/head-hunter-api/d/total.svg">
     <img src="https://poser.pugx.org/artarts36/head-hunter-api/d/total.svg" alt="Total Downloads">
 </a>
 

@@ -8,7 +8,7 @@ use ArtARTs36\HeadHunterApi\Features\Vacancy\Vacancy;
 use ArtARTs36\HeadHunterApi\Tests\Traits\CallMethodViaReflection;
 use PHPUnit\Framework\TestCase;
 
-class VacancyTest extends TestCase
+final class VacancyTest extends TestCase
 {
     use CallMethodViaReflection;
 

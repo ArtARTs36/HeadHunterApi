@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * Class ExceptionHandlerTest
  * @package ArtARTs36\HeadHunterApi\Tests\Unit
  */
-class ExceptionHandlerTest extends TestCase
+final class ExceptionHandlerTest extends TestCase
 {
     use CallMethodViaReflection;
 
