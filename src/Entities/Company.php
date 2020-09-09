@@ -46,7 +46,7 @@ class Company implements Entity
     /**
      * @return string|null
      */
-    public function getVacanciesUrl(): ng
+    public function getVacanciesUrl(): ?string
     {
         return $this->vacanciesUrl;
     }
