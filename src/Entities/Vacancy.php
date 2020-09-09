@@ -165,4 +165,12 @@ class Vacancy implements Entity
     {
         return $this->hasTestTask;
     }
+
+    /**
+     * @return Experience|null
+     */
+    public function getExperience(): ?Experience
+    {
+        return $this->experience;
+    }
 }
